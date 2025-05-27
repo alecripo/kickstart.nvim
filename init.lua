@@ -757,7 +757,15 @@ require('lazy').setup({
   { -- Typescript LSP: https://github.com/pmizio/typescript-tools.nvim
     'pmizio/typescript-tools.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    opts = {},
+    opts = {
+      settings = {
+        expose_as_code_actions = {
+          'add_missing_imports',
+          'remove_unused_imports',
+          'organize_imports',
+        },
+      },
+    },
   },
 
   { -- Autoformat
