@@ -211,6 +211,15 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', { desc = 'Write current buffer' })
 vim.keymap.set('n', '<leader>q', '<cmd>bd<CR>', { desc = 'Close current buffer' })
 
+-- Shortcut to open Mason faster
+vim.keymap.set('n', '<leader>m', '<cmd>Mason<CR>', { desc = 'Open Mason management UI' })
+-- Shortcut to open Lazy faster
+vim.keymap.set('n', '<leader>l', '<cmd>Lazy<CR>', { desc = 'Open Lazy management UI' })
+
+-- Filetree navigation
+vim.keymap.set('n', '<leader>tf', '<cmd>Neotree source=filesystem reveal=true position=left<CR>', { desc = 'Move to file tree' })
+vim.keymap.set('n', '<leader>ts', '<cmd>Neotree source=filesystem toggle=true reveal=true position=left<CR>', { desc = 'Toggle file tree' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -245,9 +254,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
-
--- Shortcut to open lazy
-vim.keymap.set('n', '<leader>l', '<cmd>Lazy<CR>', { desc = 'Open Lazy management UI' })
 
 -- [[ Configure and install plugins ]]
 --
@@ -549,9 +555,6 @@ require('lazy').setup({
             mode = mode or 'n'
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
-
-          -- Shortcut to open Mason faster
-          vim.keymap.set('n', '<leader>m', '<cmd>Mason<CR>', { desc = 'Open Mason management UI' })
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
